@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODS 1 - Erradicação da Pobreza</title>
+    <style>
+        :root {
+            --primary-color: #E5243B;
+            --secondary-color: #FF4D6D;
+            --background-color: #FFF5F5;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .tabs {
+            display: flex;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            background: #f8f8f8;
+            border: none;
+            cursor: pointer;
+            flex: 1;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .tab.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .tab:hover:not(.active) {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            background: white;
+            border-radius: 0 0 10px 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .chat-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .chat-box {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .user-message {
+            background-color: #E8F4FF;
+            margin-left: 20%;
+        }
+
+        .bot-message {
+            background-color: #F0F0F0;
+            margin-right: 20%;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .ods-icon {
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+            display: block;
+        }
+
+        .fact-card {
+            background: #f8f8f8;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .fact-card h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/api/placeholder/100/100" alt="ODS 1 Icon" class="ods-icon">
+        <h1>ODS 1 - Erradicação da Pobreza</h1>
+        <p>Tire suas dúvidas sobre o primeiro Objetivo de Desenvolvimento Sustentável</p>
+    </header>
+
+    <div class="container">
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('chat')">Chat</button>
+            <button class="tab" onclick="switchTab('ods')">Curiosidades ODS</button>
+            <button class="tab" onclick="switchTab('onu')">Sobre a ONU</button>
+        </div>
+
+        <div id="chat" class="content-section active">
+            <div class="chat-container">
+                <div class="chat-box" id="chatBox">
+                    <div class="message bot-message">
+                        Olá! Sou um especialista na ODS 1 - Erradicação da Pobreza. Como posso ajudar você hoje?
+                    </div>
+                </div>
+                <div class="input-container">
+                    <input type="text" id="userInput" placeholder="Digite sua pergunta..." onkeypress="handleKeyPress(event)">
+                    <button onclick="sendMessage()">Enviar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="ods" class="content-section">
+            <h2>Curiosidades sobre a ODS 1</h2>
+            <div class="fact-card">
+                <h3>O que é a ODS 1?</h3>
+                <p>A ODS 1 tem como objetivo acabar com a pobreza em todas as suas formas, em todos os lugares, até 2030.</p>
+            </div>
+            <div class="fact-card">
+                <h3>Metas Principais</h3>
+                <p>Erradicar a pobreza extrema para todas as pessoas em todos os lugares, atualmente medida como pessoas vivendo com menos de US$ 1,90 por dia.</p>
+            </div>
+            <div class="fact-card">
+                <h3>Dados Importantes</h3>
+                <p>Cerca de 10% da população mundial vive em situação de extrema pobreza, sobrevivendo com menos de US$ 1,90 por dia.</p>
+            </div>
+            <div class="fact-card">
+                <h3>Impacto da Pandemia</h3>
+                <p>A pandemia de COVID-19 causou o primeiro aumento na pobreza global em décadas, com milhões de pessoas sendo empurradas de volta à pobreza extrema.</p>
+            </div>
+        </div>
+
+        <div id="onu" class="content-section">
+            <h2>Sobre a ONU</h2>
+            <div class="fact-card">
+                <h3>Fundação</h3>
+                <p>A Organização das Nações Unidas (ONU) foi fundada em 24 de outubro de 1945, após o fim da Segunda Guerra Mundial.</p>
+            </div>
+            <div class="fact-card">
+                <h3>Agenda 2030</h3>
+                <p>A Agenda 2030 é um plano de ação global que reúne 17 Objetivos de Desenvolvimento Sustentável e 169 metas associadas.</p>
+            </div>
+            <div class="fact-card">
+                <h3>Estados Membros</h3>
+                <p>A ONU possui 193 Estados-membros, sendo uma das maiores organizações internacionais do mundo.</p>
+            </div>
+            <div class="fact-card">
+                <h3>Principais Órgãos</h3>
+                <p>A ONU é composta por seis órgãos principais: Assembleia Geral, Conselho de Segurança, Conselho Econômico e Social, Secretariado, Corte Internacional de Justiça e Conselho de Tutela.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const apiKey = '5f74eb8579e44d3db55d9548a13d7eb1';
+        const apiUrl = 'https://alexa-m20y9agv-francecentral.openai.azure.com/openai/deployments/gpt-35-turboGracio/chat/completions?api-version=2023-03-15-preview';
+
+        function switchTab(tabId) {
+            // Hide all content sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Deactivate all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected content section
+            document.getElementById(tabId).classList.add('active');
+            
+            // Activate selected tab
+            const selectedTab = Array.from(document.querySelectorAll('.tab')).find(tab => 
+                tab.textContent.toLowerCase().includes(tabId)
+            );
+            selectedTab.classList.add('active');
+        }
+
+        async function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const message = userInput.value.trim();
+            
+            if (!message) return;
+
+            // Add user message to chat
+            addMessageToChat(message, 'user');
+            userInput.value = '';
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'api-key': apiKey
+                    },
+                    body: JSON.stringify({
+                        messages: [
+                            {
+                                role: "system",
+                                content: "Você é um especialista na ODS 1 e deve responder a perguntas que são feitas pelos usuários sobre as ODS."
+                            },
+                            {
+                                role: "user",
+                                content: message
+                            }
+                        ],
+                        max_tokens: 800,
+                        temperature: 0.7,
+                        top_p: 0.95
+                    })
+                });
+
+                const data = await response.json();
+                const botResponse = data.choices[0].message.content;
+                addMessageToChat(botResponse, 'bot');
+            } catch (error) {
+                console.error('Error:', error);
+                addMessageToChat('Desculpe, ocorreu um erro ao processar sua mensagem.', 'bot');
+            }
+        }
+
+        function addMessageToChat(message, sender) {
+            const chatBox = document.getElementById('chatBox');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            messageDiv.textContent = message;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>
